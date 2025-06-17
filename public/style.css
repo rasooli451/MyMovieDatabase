@@ -1,0 +1,167 @@
+
+
+
+
+@font-face {
+    font-family: "Shindler";
+    src: url(./Fonts/ShindlerFont_by_Juan_Casco.ttf);
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+body{
+    height: 100%;
+    width: 100%;
+}
+
+
+.title{
+    font-family: "Shindler", Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+main{
+    background-color: #000;
+    color: #fff;
+    padding: 40px;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homePage{
+    width: 95%;
+}
+
+header{
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    background-color: #000;
+    border-bottom: 2px solid #fff;
+}
+
+header ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+
+.listItem a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+
+
+
+.listItem {
+    margin: 0 4em;
+    position: relative;
+    z-index: 0; /* Keep base layer */
+    color: #fff;
+    overflow: hidden; /* Ensures ::before stays within */
+}
+
+.listItem::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0 */
+    background-color: #fff;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+    z-index: -1;
+}
+
+/* Hover styles */
+.listItem:hover::before {
+    transform: scale(1);
+}
+
+.listItem a:hover {
+    color: #000;
+}
+
+
+
+
+header .title{
+    margin-right: auto;
+}
+
+
+
+
+.videoContainer{
+    width: 100%;
+}
+
+video{
+    width: 100%;
+}
+
+
+
+
+footer{
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    border-top: 2px solid #fff;
+    gap: 15px;
+}
+
+
+
+
+
+form{
+    border: 2px solid blue;
+    padding: 1em;
+    outline: none;
+    border-radius: 15px;
+    width: 500px;
+}
+
+label{
+    vertical-align:bottom;
+}
+
+
+
+input{
+    width: 80%;
+    border: 2px solid blue;
+    float: right;
+    height: 30px;
+    padding: 8px;
+    vertical-align: bottom;
+}
+
+textarea{
+    width: 100%;
+}
+
+.formPart{
+    margin: 1.5em 0;
+    border: 2px solid red;
+    height: 100px;
+}
+
