@@ -1,0 +1,84 @@
+
+
+
+
+
+
+
+
+
+<% if (!locals.fromCategory) { %>
+     <form action="/movies/Add" method="post">
+        <div class="formPart">
+            <label for="name">Name:
+                <input type="text" required name="name" id="name">
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="release">Release Date:
+                <input type="text" required name="release" id="release">
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="rating">Rating:
+                <input type="text" required name="rating" id="rating">
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="director">Director:
+                <input type="text" required name="director" id="director">
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="category">Category:
+                <select name="category_id" id="category">
+                    <% locals.categories.forEach(function(category){ %>
+                        <option value="<%= category.category_id %>"><%= category.name %></option>
+                    <% }); %> 
+                </select>
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="Picture">Picture:
+                <input type="file" name="picture" id="Picture">
+            </label>
+        </div>
+        <div class="buttonCont">
+            <button type="submit">Add</button>
+            <button type="reset">Reset</button>
+        </div>
+     </form>
+     <% } else { %>
+        <form action="/category/<%= category %>/Add" method="post">
+        <div class="formPart">
+            <label for="name">Name:
+                <input type="text" required name="name" id="name">
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="release">Release Date:
+                <input type="text" required name="release" id="release">
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="rating">Rating:
+                <input type="text" required name="rating" id="rating">
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="director">Director:
+                <input type="text" required name="director" id="director">
+            </label>
+        </div>
+        <div class="formPart">
+            <label for="Picture">Rating:
+                <input type="file" name="picture" id="Picture">
+            </label>
+        </div>
+        <div class="buttonCont">
+            <button type="submit">Add</button>
+            <button type="reset">Reset</button>
+        </div>
+     </form>
+
+     <% } %>

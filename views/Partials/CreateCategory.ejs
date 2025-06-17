@@ -1,0 +1,30 @@
+
+
+
+
+
+
+
+
+
+
+<form action="/newCategory" method="post">
+    <h1>Add a new Category</h1>
+    <div class="formPart">
+            <label for="name">Name: </label>
+            <input type="text" required name="name" id="name">
+    </div>
+    <div class="formPart">
+            <label for="description">Description: </label>
+            <textarea name="description" id="description" required></textarea>
+
+    </div>
+    <div class="formPart">
+            <label for="Picture">Picture: </label>
+            <input type="file" name="picture" id="Picture">
+    </div>
+    <div class="buttonCont">
+            <button type="submit">Add</button>
+            <button type="reset">Reset</button>
+    </div>
+</form>
