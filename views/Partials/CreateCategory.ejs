@@ -8,7 +8,7 @@
 
 
 
-<form action="/newCategory" method="post">
+<form action="/newCategory" method="post" encType="multipart/form-data">
     <h1>Add a new Category</h1>
     <div class="formPart">
             <label for="name">Name: </label>
@@ -21,7 +21,7 @@
     </div>
     <div class="formPart">
             <label for="Picture">Picture: </label>
-            <input type="file" name="picture" id="Picture">
+            <input type="file" name="picture" id="Picture" accept="image/*" required>
     </div>
     <div class="buttonCont">
             <button type="submit">Add</button>
