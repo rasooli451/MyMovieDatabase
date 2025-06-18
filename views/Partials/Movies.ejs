@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+<div class="AllMovies">
+    <div class="collection">
+        <% locals.movies.forEach((movie)=>{ %>
+            <a href="" class="link">
+                <div class="movieBig">
+                <div class="imgHolder">
+                    <% if (movie.picture == null) { %>
+                        <img src="" alt="">
+                    <% } else { %>
+                    <img src="data:<%= movie.datatype %>;base64,<%= movie.picture.toString('base64') %> " alt="movie image">
+                    <% } %>
+                </div>
+                <p><%= movie.Name %></p>
+                <p><%= movie.rating %></p>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+</div>
