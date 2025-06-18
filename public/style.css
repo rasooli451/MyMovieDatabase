@@ -165,3 +165,40 @@ textarea{
     height: 100px;
 }
 
+
+.categories{
+    margin-bottom: 1.5em;
+}
+
+
+
+.categories, .movies{
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    width: 100%;
+    overflow-x: scroll;
+    height: 370px;
+    scrollbar-color: #272424 #000;
+    overflow-y: hidden;
+    border: 2px solid blue;
+}
+
+
+.category, .movie{
+    text-align: center;
+    background-color: #272424;
+}
+
+.category img, .movie img{
+    width: 300px;
+    height: 300px;
+}
+
+
+
+
+.link{
+    text-decoration: none;
+    color: #fff;
+}
