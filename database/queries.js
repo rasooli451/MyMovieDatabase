@@ -9,10 +9,10 @@ const asyncHandler = require("express-async-handler");
 
 
 
-const CreateCategory = asyncHandler(async function(name, description){
+const CreateCategory = asyncHandler(async function(name, description, data, filetype){
     const exists = await CategoryExists(name);
     if (!exists){
-        await Pool.query("INSERT INTO categories (name, description) VALUES ($1,$2)", [name, description]);
+        await Pool.query("INSERT INTO categories (name, description,picture,datatype) VALUES ($1,$2,$3,$4)", [name, description,data,filetype]);
         return true;
     }
     else{
@@ -33,8 +33,13 @@ const CategoryExists = asyncHandler(async function(name){
 
 
 
-const AddMovieToCategory = asyncHandler(async function(movieName, releaseDate, rating,categoryId, directorId){
-    await Pool.query("INSERT INTO movies (Name, releaseDate, rating, category_id, director_id) VALUES ($1,$2,$3,$4,$5)", [movieName, releaseDate, rating, categoryId, directorId]);
+const AddMovieToCategory = asyncHandler(async function(movieName, releaseDate, rating,categoryId, directorName, picture, datatype){
+    const exists = await DirectorExists(directorName);
+    if (!exists){
+        await AddDirector(directorName);
+    }
+    const director_id = await GetDirectorId(directorName);
+    await Pool.query("INSERT INTO movies (Name, releaseDate, rating, category_id, director_id, picture, datatype) VALUES ($1,$2,$3,$4,$5,$6,$7)", [movieName, releaseDate, rating, categoryId, director_id,picture,datatype]);
 })
 
 
@@ -71,6 +76,12 @@ const DirectorExists = asyncHandler(async function(directorName){
 })
 
 
+const GetDirectorId = asyncHandler(async function(directorName){
+    const {rows} = await Pool.query("SELECT director_id FROM directors WHERE name ILIKE ($1)", [directorName]);
+    return rows[0].director_id;
+})
+
+
 
 
 const RemoveMovie = asyncHandler(async function(movieName){
@@ -93,5 +104,7 @@ const getAllMovies = asyncHandler(async function(){
     const {rows} = await Pool.query("SELECT * FROM movies");
     return rows;
 })
+
+
 
 module.exports = {CreateCategory, CategoryExists, AddMovieToCategory, GetCategoryId, AddDirector, DirectorExists, RemoveMovie, RemoveCategory, getAllCategories, getAllMovies};
