@@ -5,14 +5,18 @@ const app = express();
 const PORT = 5000;
 const path = require("node:path");
 const assetSource = path.join(__dirname, "public");
+const fileUploader = require("express-fileupload");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(express.static(assetSource));
 app.use(express.urlencoded({extended : true}));
+app.use(fileUploader());
 
-const indexRouter = require("./routes/index/IndexRouter");
+app.use(express.json());
+
+const indexRouter = require("./routes/IndexRouter");
 const CategoryRouter = require("./routes/CategoryRouter");
 const MovieRouter = require("./routes/MovieRouter");
 
