@@ -1,0 +1,26 @@
+
+
+
+
+
+
+<div class="AllCategories">
+    <div class="collection">
+        <% locals.categories.forEach((category)=>{ %>
+            <a href="" class="link">
+                <div class="categoryBig">
+                <div class="imgHolder">
+                    <% if (category.picture == null) { %>
+                        <img src="" alt="">
+                    <% } else { %>
+                    <img src="data:<%= category.datatype %>;base64,<%= category.picture.toString('base64') %> " alt="movie image">
+                    <% } %>
+                </div>
+                <p><%= category.Name %></p>
+                <p><%= category.count %> Movies</p>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+</div>
+
