@@ -15,7 +15,13 @@
             <% locals.categories.forEach((category) => { %>
                 <a href="" class="link">
                     <div class="category">
-                    <img src="" alt="">
+                        <div class="imgHolder">
+                            <% if (category.picture == null) {%>
+                        <img src="" alt="">
+                            <% } else { %>
+                            <img src="data:<%= category.datatype %>;base64,<%= category.picture.toString('base64') %> " alt="category image">
+                            <% } %>
+                        </div>
                     <p><%= category.name %></p>
                 </div>
             </a>
@@ -25,7 +31,13 @@
             <% locals.movies.forEach((movie) => { %>
                 <a href="" class="link">
                     <div class="movie">
-                    <img src="" alt="">
+                        <div class="imgHolder">
+                            <% if(movie.picture == null) { %>
+                        <img src="" alt="">
+                        <% } else { %>
+                            <img src="data:<%= movie.datatype %>;base64,<%= movie.picture.toString('base64') %>" alt="movie image">
+                        <% } %>
+                        </div>
                     <p><%= movie.name %></p>
                 </div>
                 </a>
