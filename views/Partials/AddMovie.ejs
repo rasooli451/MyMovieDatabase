@@ -35,7 +35,7 @@
         </div>
         <div class="formPart">
             <label for="Picture">Picture:</label>
-            <input type="file" name="picture" id="Picture" required>
+            <input type="file" name="picture" id="Picture" required accept="image/*">
         </div>
         <div class="buttonCont">
             <button type="submit">Add</button>
@@ -59,6 +59,18 @@
         <div class="formPart">
             <label for="director">Director:</label>
             <input type="text" required name="director" id="director">
+        </div>
+        <div class="formPart">
+            <label for="category">Category:</label>
+            <select name="category_id" id="category">
+                    <% locals.categories.forEach(function(category){ %>
+                        <% if (category.category_id == locals.category_id) { %>
+                            <option value="<%= category.category_id %>" selected><%= category.name %></option>
+                        <% } else { %>
+                            <option value="<%= category.category_id %>" ><%= category.name %></option>
+                        <% } %>
+                    <% }); %> 
+            </select>
         </div>
         <div class="formPart">
             <label for="Picture">Picture:</label>
