@@ -7,29 +7,41 @@
 <div class="homePage">
     <div class="IntroductionContainer">
             <div class="videoContainer">
-            <video src="/BgVideo.mp4" autoplay muted loop></video>
+            <video src="/BgVideo.mp4" autoplay muted loop class="muted">
+            </video>
+             </div>
         </div>
-        <h1>Movie Inventory</h1>
-        </div>
-        <div class="categories">
-            <% locals.categories.forEach((category) => { %>
-                <a href="" class="link">
-                    <div class="category">
-                        <div class="imgHolder">
-                            <% if (category.picture == null) {%>
-                        <img src="" alt="">
-                            <% } else { %>
+        <div class="categoriesContainer">
+            <h1 class="soulway big">Featured Categories</h1>
+            <div class="categories">
+                <% if (locals.categories.length > 0) { %>
+                    <% locals.categories.forEach((category) => { %>
+                    <a href="" class="link">
+                        <div class="category">
+                            <div class="imgHolder">
+                                <% if (category.picture == null) {%>
+                            <img src="" alt="">
+                                <% } else { %>
                             <img src="data:<%= category.datatype %>;base64,<%= category.picture.toString('base64') %> " alt="category image">
-                            <% } %>
+                                <% } %>
+                            </div>
+                            <div class="categoryDetails">
+                                <p class="soulway"><%= category.name %></p>
+                                <p><%= category.count %> Films</p>
+                            </div>
                         </div>
-                    <p><%= category.name %></p>
-                </div>
-            </a>
-            <% }) %>
+                    </a>
+                    <% }) %>
+                <% } else { %>
+                    <h1>No Category Exists, Create a Category to display!</h1>
+                <% } %>
+            </div>
         </div>
-        <div class="movies">
-            <% locals.movies.forEach((movie) => { %>
-                <a href="" class="link">
+        <div class="moviesContainer">
+            <h1 class="soulway big">Featured Movies</h1>
+            <div class="movies">
+                <% if (locals.movies.length > 0) { %>
+                <% locals.movies.forEach((movie) => { %>
                     <div class="movie">
                         <div class="imgHolder">
                             <% if(movie.picture == null) { %>
@@ -38,9 +50,19 @@
                             <img src="data:<%= movie.datatype %>;base64,<%= movie.picture.toString('base64') %>" alt="movie image">
                         <% } %>
                         </div>
-                    <p><%= movie.name %></p>
-                </div>
-                </a>
-            <% }) %>
+                        <div class="movieDetails">
+                            <p class="soulway"><%= movie.name %></p>
+                            <p><%= movie.category %></p>
+                            <div class="buttons">
+                            <a href="/movies/edit/<%= movie.movie_id %>">Edit</a>
+                            <a href="/remove/<%= movie.movie_id %>,<%= movie.category_id %>">Remove</a>
+                             </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                <% } else { %>
+                    <h1>No Movie exists, Add a movie to a Category to display!</h1>
+                <% } %> 
+            </div>
         </div>
 </div>
