@@ -7,9 +7,9 @@
 
 <div class="AllMovies">
     <div class="collection">
-        <% locals.movies.forEach((movie)=>{ %>
-            <a href="" class="link">
-                <div class="movieBig">
+        <% if (locals.movies.length > 0) { %>
+            <% locals.movies.forEach((movie)=>{ %>
+                <div class="movie">
                 <div class="imgHolder">
                     <% if (movie.picture == null) { %>
                         <img src="" alt="">
@@ -17,10 +17,21 @@
                     <img src="data:<%= movie.datatype %>;base64,<%= movie.picture.toString('base64') %> " alt="movie image">
                     <% } %>
                 </div>
-                <p><%= movie.Name %></p>
-                <p><%= movie.rating %></p>
+                <div class="movieDetails">
+                    <p class="soulway"><%= movie.name %></p>
+                    <p><%= movie.releasedate.toLocaleString().split(",")[0] %></p>
+                    <p><%= movie.rating %></p>
+                    <p><%= movie.category %></p>
+                    <p><%= movie.director %></p>
+                    <div class="buttons">
+                    <a href="/movies/edit/<%= movie.movie_id %>">Edit</a>
+                    <a href="/movies/remove/<%= movie.movie_id %>,<%= movie.category_id %>">Remove</a>
                 </div>
-            </a>
-        <% }) %>
+                </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <h1>No Movie exists, Add a movie to a category to display!</h1>
+         <% } %>
     </div>
 </div>
