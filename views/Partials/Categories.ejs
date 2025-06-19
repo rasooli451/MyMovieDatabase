@@ -6,9 +6,10 @@
 
 <div class="AllCategories">
     <div class="collection">
-        <% locals.categories.forEach((category)=>{ %>
+        <% if (locals.categories.length > 0){ %>
+            <% locals.categories.forEach((category)=>{ %>
             <a href="" class="link">
-                <div class="categoryBig">
+                <div class="category">
                 <div class="imgHolder">
                     <% if (category.picture == null) { %>
                         <img src="" alt="">
@@ -16,11 +17,14 @@
                     <img src="data:<%= category.datatype %>;base64,<%= category.picture.toString('base64') %> " alt="movie image">
                     <% } %>
                 </div>
-                <p><%= category.Name %></p>
+                <p class="soulway"><%= category.name %></p>
                 <p><%= category.count %> Movies</p>
                 </div>
             </a>
-        <% }) %>
+            <% }) %>
+         <% } else { %>
+            <h1>No Category exists. Create a category to display!</h1>
+          <% } %>
     </div>
 </div>
 
