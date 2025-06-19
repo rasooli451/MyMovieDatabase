@@ -40,13 +40,13 @@ const CreateCategoryController =[validateImage, asyncHandler(async function(req,
 
     const fileData = req.files.picture.data;
     const dataType = req.files.picture.mimetype;
-
+    console.log(description);
     const result = await CreateCategory(name, description, fileData, dataType);
     if (result){
         res.redirect("/");
     }
     else{
-        return res.status(400).render("Pages/index", {content : "../Partials/Errors", errors : ["Category Already Exists"]});
+        return res.status(400).render("Pages/index", {content : "../Partials/Errors", errors : [{msg : "An Error Occured, Category Already Exists"}]});
     }
 })]
 
