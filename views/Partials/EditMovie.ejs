@@ -1,0 +1,43 @@
+
+
+
+
+
+<form action="/movies/edit/<%= movie.movie_id %>" method="post" encType="multipart/form-data">
+        <div class="formPart">
+            <label for="name">Name:</label>
+            <input type="text" required name="name" id="name" value="<%= movie.name %>">
+        </div>
+        <div class="formPart">
+            <label for="release">Release Date:</label>
+            <input type="date" required name="release" id="release" value="<%= movie.releasedate.toLocaleString().split(",")[0] %>">
+        </div>
+        <div class="formPart">
+            <label for="rating">Rating:</label>
+            <input type="text" required name="rating" id="rating" value="<%= movie.rating %>">
+        </div>
+        <div class="formPart">
+            <label for="director">Director:</label>
+            <input type="text" required name="director" id="director" value="<%= movie.director %>">
+        </div>
+        <div class="formPart">
+            <label for="category">Category:</label>
+            <select name="category_id" id="category">
+                    <% locals.categories.forEach(function(category){ %>
+                        <% if (category.category_id == movie.category_id) { %>
+                            <option value="<%= category.category_id %>" selected><%= category.name %></option>
+                        <% } else { %>
+                            <option value="<%= category.category_id %>" ><%= category.name %></option>
+                        <% } %>
+                    <% }); %> 
+            </select>
+        </div>
+        <div class="formPart">
+            <label for="Picture">Picture:</label>
+            <input type="file" name="picture" id="Picture" required accept="image/*">
+        </div>
+        <div class="buttonCont">
+            <button type="submit">Add</button>
+            <button type="reset">Reset</button>
+        </div>
+     </form>
