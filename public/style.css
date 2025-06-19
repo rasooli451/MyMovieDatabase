@@ -8,6 +8,12 @@
 }
 
 
+@font-face {
+    font-family: "Soulway";
+    src: url(./Fonts/SoulwayFont-Demo.otf);
+}
+
+
 
 *{
     margin: 0;
@@ -27,6 +33,19 @@ body{
 .title{
     font-family: "Shindler", Arial, Helvetica, sans-serif;
     color: #fff;
+}
+
+
+.soulway{
+    font-family: "Soulway", Arial, Helvetica, sans-serif;
+    font-size: 1.3em;
+    font-weight: 400;
+    margin-bottom: 7px;
+}
+
+
+.big{
+    font-size: 2.5em;
 }
 
 main{
@@ -166,9 +185,12 @@ textarea{
 }
 
 
-.categories{
+.categoriesContainer{
     margin-bottom: 1.5em;
 }
+
+
+
 
 
 
@@ -178,16 +200,29 @@ textarea{
     padding: 1em;
     width: 100%;
     overflow-x: scroll;
-    height: 370px;
+    align-items: center;
+    height: 430px;
     scrollbar-color: #272424 #000;
     overflow-y: hidden;
-    border: 2px solid blue;
 }
 
 
+.AllMovies{
+    width: 100%;
+}
+
+
+
+.collection{
+    display: flex;
+    gap: 1em;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
 .category, .movie{
     text-align: center;
-    background-color: #272424;
+    background : linear-gradient(to bottom right, #FF6F61, #996d2f);
 }
 
 .category img, .movie img{
@@ -196,9 +231,37 @@ textarea{
 }
 
 
+.movieDetails, .categoryDetails{
+    padding: 15px;
+}
 
 
 .link{
     text-decoration: none;
     color: #fff;
+}
+
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: 7px;
+}
+
+
+.buttons a{
+    text-decoration: none;
+    color: #fff;
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+    background-color: #000;
+    border-radius: 5px;
+}
+
+
+.buttons a:hover{
+    background-color: #FF6F61;
+    transform: scale(1.2);
 }
