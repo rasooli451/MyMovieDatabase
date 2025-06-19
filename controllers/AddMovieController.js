@@ -8,6 +8,9 @@ const {body, validationResult} = require("express-validator");
 
 
 const validateMovie = [
+    body("name").notEmpty().withMessage("Name field Should not be empty!"),
+    body("release").notEmpty().withMessage("Release date field should not be empty!"),
+    body("director").notEmpty().withMessage("Director field should not be empty!"),
     body("rating").trim().isInt({min : 0, max : 100}).withMessage("Rating should be a number between 0 and 100"),
     body("file").custom((value, {req}) => {
         const file = req.files.picture;
@@ -32,11 +35,14 @@ const AddMovieController = [validateMovie, async function(req, res){
         res.status(400).render("Pages/index", {content : "../Partials/Errors", errors : errors.array()});
     }
     const {name, release, rating, director, category_id} = req.body;
-
     const fileData = req.files.picture.data;
     const dataType = req.files.picture.mimetype;
-    await AddMovieToCategory(name, release, rating, category_id,director,fileData,dataType);
-    res.redirect("/");
+    const result = await AddMovieToCategory(name, release, rating, category_id,director,fileData,dataType);
+    if (result)
+        res.redirect("/");
+    else{
+        res.status(400).render("Pages/index", {content : "../Partials/Errors", errors : [{msg : "An Error occured, Movie already Exists!"}]})
+    }
 }
 ]
 
