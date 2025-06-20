@@ -1,0 +1,32 @@
+
+
+
+
+
+
+
+<div class="CategoryPage">
+    <div class="CategoryContainer">
+        <div class="imageHolder">
+            <% if (category.picture == null) {%>
+                <img src="" alt="">
+            <% } else { %>
+                <img src="data:<%= category.datatype %>;base64,<%= category.picture.toString('base64') %> " alt="category image">
+            <% } %>
+        </div>
+        <div class="categoryDetails">
+            <p class="soulway"><%= category.name %></p>
+            <p><%= category.description %></p>
+            <div class="buttons">
+                <a href="/category/edit/<%= category.category_id %>">Edit</a>
+                <a href="/category/remove/<%= category.category_id %>">Remove</a>
+            </div>
+        </div>
+        <div class="categoryMovies">
+            <p class="soulway"><%= category.count %> Movies</p>
+            <div class="collection">
+                <%- include("Movies") %>
+            </div>
+        </div>
+    </div>
+</div>
