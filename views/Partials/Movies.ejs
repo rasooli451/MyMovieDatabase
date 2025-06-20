@@ -5,9 +5,8 @@
 
 
 
-<div class="AllMovies">
-    <div class="collection">
-        <% if (locals.movies.length > 0) { %>
+
+<% if (locals.movies.length > 0) { %>
             <% locals.movies.forEach((movie)=>{ %>
                 <div class="movie">
                 <div class="imgHolder">
@@ -24,14 +23,12 @@
                     <p><%= movie.category %></p>
                     <p><%= movie.director %></p>
                     <div class="buttons">
-                    <a href="/movies/edit/<%= movie.movie_id %>">Edit</a>
-                    <a href="/movies/remove/<%= movie.movie_id %>,<%= movie.category_id %>">Remove</a>
+                    <a href="<%= locals.path %>/edit/<%= movie.movie_id %>">Edit</a>
+                    <a href="<%= locals.path %>/remove/<%= movie.movie_id %>,<%= movie.category_id %>">Remove</a>
                 </div>
                 </div>
                 </div>
             <% }) %>
-        <% } else { %>
-            <h1>No Movie exists, Add a movie to a category to display!</h1>
-         <% } %>
-    </div>
-</div>
+<% } else { %>
+    <h1>No Movie exists, Add a movie to a category to display!</h1>
+<% } %>
