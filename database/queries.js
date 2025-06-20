@@ -155,6 +155,11 @@ const getMovie = asyncHandler(async function(movieId){
 
 
 
+const getCategory = asyncHandler(async function(category_id){
+    const {rows} = await Pool.query("SELECT * FROM categories WHERE category_id=($1)", [category_id]);
+    return rows[0];
+})
+
 const editMovie = asyncHandler(async function(movieId,movieName, releaseDate, rating,categoryId, directorName, picture, datatype){
     const exists = await DirectorExists(directorName);
     if (!exists){
@@ -174,4 +179,32 @@ const editMovie = asyncHandler(async function(movieId,movieName, releaseDate, ra
 })
 
 
-module.exports = {CreateCategory, CategoryExists, AddMovieToCategory, GetCategoryId, AddDirector, DirectorExists, RemoveMovie, RemoveCategory, getAllCategories, getAllMovies,getMovie, editMovie};
+
+const getMoviesByCategory = asyncHandler(async function(category_id){
+    const {rows} = await Pool.query("SELECT movies.*, categories.name AS category, directors.name AS director FROM movies INNER JOIN categories ON movies.category_id=categories.category_id INNER JOIN directors ON movies.director_id=directors.director_id WHERE movies.category_id=($1)", [category_id]);
+    return rows;
+})
+
+const deepSearchCategory = asyncHandler(async function(category_id, category_name){
+    const {rows} = await Pool.query("SELECT * FROM categories WHERE name=($1) AND category_id!=($2)", [category_name, category_id]);
+    if (rows.length > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+})
+
+const editCategory = asyncHandler(async function(category_id, name, description, picture, datatype){
+    const isRepeat = await deepSearchCategory(category_id, name);
+    if (!isRepeat){
+        await Pool.query("UPDATE categories SET name=($1), description=($2), picture=($3), datatype=($4) WHERE category_id=($5)", [name,description,picture,datatype,category_id]);
+        return true;
+    }
+    else{
+        return false;
+    }
+})
+
+
+module.exports = {CreateCategory, CategoryExists, AddMovieToCategory, GetCategoryId, AddDirector, DirectorExists, RemoveMovie, RemoveCategory, getAllCategories, getAllMovies,getMovie, editMovie, getMoviesByCategory, getCategory, editCategory};
