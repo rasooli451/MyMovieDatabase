@@ -1,0 +1,31 @@
+
+
+
+
+
+
+
+
+
+
+
+<form action="/category/edit/<%= category.category_id %>" method="post" encType="multipart/form-data">
+    <h1>Edit Category</h1>
+    <div class="formPart">
+            <label for="name">Name: </label>
+            <input type="text" required name="name" id="name" value="<%= category.name %>">
+    </div>
+    <div class="formPart">
+            <label for="description">Description: </label>
+            <textarea name="description" id="description" required><%= category.description %></textarea>
+
+    </div>
+    <div class="formPart">
+            <label for="Picture">Picture: </label>
+            <input type="file" name="picture" id="Picture" accept="image/*" required>
+    </div>
+    <div class="buttonCont">
+            <button type="submit">Add</button>
+            <button type="reset">Reset</button>
+    </div>
+</form>
