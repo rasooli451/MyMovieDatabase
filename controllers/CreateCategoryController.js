@@ -8,6 +8,8 @@ const asyncHandler = require("express-async-handler");
 
 
 const validateImage = [
+    body("name").notEmpty().withMessage("An error occured, name should not be empty!"),
+    body("description").notEmpty().withMessage("An error occured, description should not be empty!"),
     body("file").custom((value, {req}) => {
         const file = req.files.picture;
         if (!file.mimetype.includes("image")){
@@ -40,7 +42,6 @@ const CreateCategoryController =[validateImage, asyncHandler(async function(req,
 
     const fileData = req.files.picture.data;
     const dataType = req.files.picture.mimetype;
-    console.log(description);
     const result = await CreateCategory(name, description, fileData, dataType);
     if (result){
         res.redirect("/");
