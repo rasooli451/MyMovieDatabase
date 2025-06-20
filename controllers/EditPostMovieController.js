@@ -40,7 +40,13 @@ const EditPostMovieController = [
         const dataType = req.files.picture.mimetype;
         const {id} = req.params;
         await editMovie(id, name, release, rating, category_id, director, fileData, dataType);
-        res.redirect("/movies");
+        if (req.originalUrl.includes("movies"))
+              res.redirect("/movies");
+        else if(req.originalUrl.includes("category")){
+            res.redirect(`/category/${req.body.previous}`);
+        }
+        else
+            res.redirect("/");
     }
 ]
 
