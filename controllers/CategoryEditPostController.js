@@ -33,7 +33,7 @@ const CategoryEditPostController = [validateImage, async function(req, res){
     const fileData = req.files.picture.data;
     const dataType = req.files.picture.mimetype;
     const result = await editCategory(id, name, description, fileData, dataType)
-    console.log(result);
+
     if (result){
         res.redirect(`/category/${id}`);
     }
