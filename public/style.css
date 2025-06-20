@@ -133,7 +133,9 @@ video{
 }
 
 
-
+.IntroductionContainer{
+    margin-bottom: 1em;
+}
 
 footer{
     min-height: 200px;
@@ -201,9 +203,8 @@ textarea{
     width: 100%;
     overflow-x: scroll;
     align-items: center;
-    height: 430px;
+    height: 470px;
     scrollbar-color: #272424 #000;
-    overflow-y: hidden;
 }
 
 
@@ -223,6 +224,12 @@ textarea{
 .category, .movie{
     text-align: center;
     background : linear-gradient(to bottom right, #FF6F61, #996d2f);
+}
+
+
+
+.movie:hover, .category:hover{
+    transform: scaleX(1.06);   
 }
 
 .category img, .movie img{
@@ -264,4 +271,13 @@ textarea{
 .buttons a:hover{
     background-color: #FF6F61;
     transform: scale(1.2);
+}
+
+
+
+
+
+.hidden{
+    display: none;
+    opacity: 0;
 }
