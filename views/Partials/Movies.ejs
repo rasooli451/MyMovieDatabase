@@ -18,10 +18,10 @@
                 </div>
                 <div class="movieDetails">
                     <p class="soulway"><%= movie.name %></p>
-                    <p><%= movie.releasedate.toLocaleString().split(",")[0] %></p>
-                    <p><%= movie.rating %></p>
-                    <p><%= movie.category %></p>
-                    <p><%= movie.director %></p>
+                    <p>Release date:<%= movie.releasedate.toLocaleString().split(",")[0] %></p>
+                    <p>Rating:<%= movie.rating %></p>
+                    <p>Category:<%= movie.category %></p>
+                    <p>Director:<%= movie.director %></p>
                     <div class="buttons">
                     <a href="<%= locals.path %>/edit/<%= movie.movie_id %>">Edit</a>
                     <a href="<%= locals.path %>/remove/<%= movie.movie_id %>,<%= movie.category_id %>">Remove</a>
