@@ -1,0 +1,15 @@
+
+
+
+<div class="filterSection">
+    <form action="<%= locals.target %>" class="filter" method="get">
+        <label for="order">Order By:</label>
+        <select name="order" id="order">
+            <option value="">Select an Option</option>
+            <option value="highrating" <%= locals.order == "highrating" ? "Selected" : "" %>>Highest Rated</option>
+            <option value="lowrating" <%= locals.order == "lowrating" ? "Selected" : "" %>>Lowest Rated</option>
+            <option value="recentrelease" <%= locals.order == "recentrelease" ? "Selected" : "" %>>Newest</option>
+            <option value="oldestrelease" <%= locals.order == "oldestrelease" ? "Selected" : "" %>>Oldest</option>
+        </select>
+    </form>
+</div>
