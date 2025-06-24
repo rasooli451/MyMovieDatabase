@@ -9,6 +9,7 @@
 
 <% if (!locals.fromCategory) { %>
      <form action="/movies/Add" method="post" encType="multipart/form-data">
+        <h1 class="soulway">Add a new Movie</h1>
         <div class="formPart">
             <label for="name">Name:</label>
             <input type="text" required name="name" id="name">
@@ -43,14 +44,15 @@
         </div>
      </form>
      <% } else { %>
-        <form action="/category/<%= category %>/Add" method="post" encType="multipart/form-data">
+        <form action="/category/<%= locals.id %>/Add" method="post" encType="multipart/form-data">
+            <h1 class="soulway">Add a new Movie</h1>
         <div class="formPart">
             <label for="name">Name:</label>
             <input type="text" required name="name" id="name">
         </div>
         <div class="formPart">
             <label for="release">Release Date:</label>
-            <input type="text" required name="release" id="release">
+            <input type="date" required name="release" id="release">
         </div>
         <div class="formPart">
             <label for="rating">Rating:</label>
@@ -64,7 +66,7 @@
             <label for="category">Category:</label>
             <select name="category_id" id="category">
                     <% locals.categories.forEach(function(category){ %>
-                        <% if (category.category_id == locals.category_id) { %>
+                        <% if (category.category_id == locals.id) { %>
                             <option value="<%= category.category_id %>" selected><%= category.name %></option>
                         <% } else { %>
                             <option value="<%= category.category_id %>" ><%= category.name %></option>
@@ -72,6 +74,7 @@
                     <% }); %> 
             </select>
         </div>
+        <input type="text" value="<%= locals.id %>" class="hidden" name="previous">
         <div class="formPart">
             <label for="Picture">Picture:</label>
             <input type="file" name="picture" id="Picture">
