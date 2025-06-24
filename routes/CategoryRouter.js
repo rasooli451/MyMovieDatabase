@@ -14,6 +14,10 @@ const EditMovieController = require("../controllers/EditMovieController");
 const EditPostMovieController = require("../controllers/EditPostMovieController");
 const CategoryEditController = require("../controllers/CategoryEditController");
 const CategoryEditPostController = require("../controllers/CategoryEditPostController");
+const CategoryAddMovieController = require("../controllers/CategoryAddMovieController");
+const CategoryAddMoviePostController = require("../controllers/CategoryAddMoviePostController");
+const CategoryRemoveController = require("../controllers/CategoryRemoveController");
+const WarningController = require("../controllers/WarningController");
 
 CategoryRouter.get("/", CategoryIndexController);
 
@@ -29,9 +33,28 @@ CategoryRouter.get("/cat/edit/:id", EditMovieController);
 CategoryRouter.post("/cat/edit/:id", EditPostMovieController);
 
 
-CategoryRouter.get("/edit/:id", CategoryEditController);
+CategoryRouter.get("/editc/:id", CategoryEditController);
 
-CategoryRouter.post("/edit/:id", CategoryEditPostController);
+CategoryRouter.post("/editc/:id", CategoryEditPostController);
+
+
+CategoryRouter.get("/editCat/:id", CategoryEditController);
+
+CategoryRouter.post("/editCat/:id", CategoryEditPostController);
+
+
+
+
+CategoryRouter.get("/:id/Add", CategoryAddMovieController);
+
+CategoryRouter.post("/:id/Add", CategoryAddMoviePostController);
+
+
+CategoryRouter.get("/removec/:id", CategoryRemoveController);
+
+CategoryRouter.get("/warning/:id", WarningController);
+
+
 /*CategoryRouter.get("/remove/:id", CategoryRemoveController);*/
 
 
