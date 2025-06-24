@@ -9,7 +9,7 @@
 
 
 
-<form action="/category/edit/<%= category.category_id %>" method="post" encType="multipart/form-data">
+<form action="<%= locals.path %><%= category.category_id %>" method="post" encType="multipart/form-data">
     <h1>Edit Category</h1>
     <div class="formPart">
             <label for="name">Name: </label>
@@ -21,11 +21,15 @@
 
     </div>
     <div class="formPart">
+            <p>Current image:</p>
+            <img src="data:<%= category.datatype %>;base64,<%= category.picture.toString('base64') %> " alt="movie image" class="formImage">
+            <p>You can upload a new image to replace this one (optional).</p>
             <label for="Picture">Picture: </label>
-            <input type="file" name="picture" id="Picture" accept="image/*" required>
+            <input type="file" name="picture" id="Picture" accept="image/*">
     </div>
     <div class="buttonCont">
             <button type="submit">Add</button>
             <button type="reset">Reset</button>
     </div>
+    
 </form>
