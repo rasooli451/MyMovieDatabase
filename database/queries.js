@@ -115,14 +115,12 @@ const decreaseCount = asyncHandler(async function(category_id){
 
 const getCount = asyncHandler(async function(category_id){
     const {rows} = await Pool.query("SELECT count FROM categories WHERE category_id=($1)", [category_id]);
-    console.log(category_id);
-    console.log(rows);
     return rows[0].count;
 })
 
 
-const RemoveCategory = asyncHandler(async function(categoryName){
-    await Pool.query("DELETE FROM categories WHERE name=($1)", [categoryName]);
+const RemoveCategory = asyncHandler(async function(category_id){
+    await Pool.query("DELETE FROM categories WHERE category_id=($1)", [category_id]);
 })
 
 
@@ -134,6 +132,11 @@ const getAllCategories = asyncHandler(async function(){
 
 const getAllMovies = asyncHandler(async function(){
     const {rows} = await Pool.query("SELECT movies.*, categories.name AS category, directors.name AS director FROM movies INNER JOIN categories ON movies.category_id=categories.category_id INNER JOIN directors ON movies.director_id=directors.director_id");
+    return rows;
+})
+
+const getFeaturedMovies = asyncHandler(async function(){
+    const {rows} = await Pool.query("SELECT DISTINCT ON (movies.Name) movies.*, categories.name AS category, directors.name AS director FROM movies INNER JOIN categories ON movies.category_id=categories.category_id INNER JOIN directors ON movies.director_id=directors.director_id LIMIT 6");
     return rows;
 })
 
@@ -171,7 +174,10 @@ const editMovie = asyncHandler(async function(movieId,movieName, releaseDate, ra
     if (rows[0].category_id != categoryId){
         categoryChanged = true;
     }
-    await Pool.query("UPDATE movies SET name=($1), releasedate=($2), rating=($3),category_id=($4),director_id=($5),picture=($6),datatype=($7) WHERE movie_id=($8)", [movieName, releaseDate, rating, categoryId, director_id, picture, datatype, movieId]);
+    if (picture == null)
+        await Pool.query("UPDATE movies SET name=($1), releasedate=($2), rating=($3),category_id=($4),director_id=($5) WHERE movie_id=($6)", [movieName, releaseDate, rating, categoryId, director_id, movieId]);
+    else
+        await Pool.query("UPDATE movies SET name=($1), releasedate=($2), rating=($3),category_id=($4),director_id=($5),picture=($6),datatype=($7) WHERE movie_id=($8)", [movieName, releaseDate, rating, categoryId, director_id, picture, datatype, movieId]);
     if (categoryChanged){
         await increaseCount(categoryId);
         await decreaseCount(rows[0].category_id);
@@ -198,7 +204,10 @@ const deepSearchCategory = asyncHandler(async function(category_id, category_nam
 const editCategory = asyncHandler(async function(category_id, name, description, picture, datatype){
     const isRepeat = await deepSearchCategory(category_id, name);
     if (!isRepeat){
-        await Pool.query("UPDATE categories SET name=($1), description=($2), picture=($3), datatype=($4) WHERE category_id=($5)", [name,description,picture,datatype,category_id]);
+        if (picture != null)
+            await Pool.query("UPDATE categories SET name=($1), description=($2), picture=($3), datatype=($4) WHERE category_id=($5)", [name,description,picture,datatype,category_id]);
+        else
+            await Pool.query("UPDATE categories SET name=($1), description=($2) WHERE category_id=($3)", [name,description,category_id]);
         return true;
     }
     else{
@@ -206,5 +215,18 @@ const editCategory = asyncHandler(async function(category_id, name, description,
     }
 })
 
+const filterMovies = asyncHandler(async function(order, constraint, ascending){
+    let query = "SELECT movies.*, categories.name AS category, directors.name AS director FROM movies INNER JOIN categories ON movies.category_id=categories.category_id INNER JOIN directors ON movies.director_id=directors.director_id";
+    if (constraint != null){
+        query += " WHERE movies.category_id=" + constraint;
+    }
+    query += " ORDER BY " + order;
+    if (!ascending){
+        query += " DESC"
+    }
+    const {rows} = await Pool.query(query);
+    return rows;
+})
 
-module.exports = {CreateCategory, CategoryExists, AddMovieToCategory, GetCategoryId, AddDirector, DirectorExists, RemoveMovie, RemoveCategory, getAllCategories, getAllMovies,getMovie, editMovie, getMoviesByCategory, getCategory, editCategory};
+
+module.exports = {CreateCategory, CategoryExists, AddMovieToCategory, GetCategoryId, AddDirector, DirectorExists, RemoveMovie, RemoveCategory, getAllCategories, getAllMovies,getMovie, editMovie, getMoviesByCategory, getCategory, editCategory, filterMovies, getFeaturedMovies};
