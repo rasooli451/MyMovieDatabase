@@ -36,8 +36,11 @@
              <input type="text" value="<%= movie.category_id %>" class="hidden" name="previous">
         <% } %>  
         <div class="formPart">
+            <p>Current image:</p>
+            <img src="data:<%= movie.datatype %>;base64,<%= movie.picture.toString('base64') %> " alt="movie image" class="formImage">
+            <p>You can upload a new image to replace this one (optional).</p>
             <label for="Picture">Picture:</label>
-            <input type="file" name="picture" id="Picture" required accept="image/*">
+            <input type="file" name="picture" id="Picture" accept="image/*">
         </div>
         
         <div class="buttonCont">
