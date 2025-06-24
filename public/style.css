@@ -183,12 +183,21 @@ textarea{
 .formPart{
     margin: 1.5em 0;
     border: 2px solid red;
-    height: 100px;
+    padding: 1em;
 }
 
 
 .categoriesContainer{
     margin-bottom: 1.5em;
+}
+
+.filterSection{
+    width: 100%;
+    padding: 1em;
+}
+.filter{
+    width: 250px;
+    margin-left: auto;
 }
 
 
@@ -281,3 +290,23 @@ textarea{
     display: none;
     opacity: 0;
 }
+
+
+.body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.warning{
+
+}
+
+
+.formImage{
+    width: 70px;
+    height: 70px;
+}
+
+
