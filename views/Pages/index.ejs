@@ -19,5 +19,10 @@
         <%- include(locals.content, {categories : locals.categories, movies : locals.movies}) %>
     </main>
     <%- include("../Partials/Footer") %>
+    <script>
+    document.querySelector("#order").addEventListener('change', function(){
+        document.querySelector(".filter").submit();
+    })
+    </script>
 </body>
 </html>
