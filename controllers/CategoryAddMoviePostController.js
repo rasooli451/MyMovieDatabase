@@ -27,7 +27,7 @@ const validateMovie = [
 const CategoryAddMoviePostController = [validateMovie, async function(req, res){
     const errors = validationResult(req);
     if (!errors.isEmpty()){
-        res.render("Pages/index", {content : "../Partials/Errors", errors : errors.array()});
+        return res.render("Pages/index", {content : "../Partials/Errors", errors : errors.array()});
     }
     const {name, release, rating, director, category_id, previous} = req.body;
     const fileData = req.files.picture.data;
@@ -37,7 +37,7 @@ const CategoryAddMoviePostController = [validateMovie, async function(req, res){
         res.redirect(`/category/${previous}`);
     }
     else{
-        res.status(400).render("Pages/index", {content : "../Partials/Errors", errors : [{msg : "An Error occured, Movie already Exists!"}]})
+        return res.status(400).render("Pages/index", {content : "../Partials/Errors", errors : [{msg : "An Error occured, Movie already Exists!"}]})
     }
 }]
 

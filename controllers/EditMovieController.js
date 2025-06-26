@@ -18,7 +18,6 @@ const EditMovieController = async function(req, res){
     else{
         res.render("Pages/index", {content : "../Partials/EditMovie", movie, categories, path : ""})
     }
-    /*res.render("Pages/index", {content : "../Partials/EditMovie", movie : movie, categories});*/
 }
 
 

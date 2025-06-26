@@ -9,7 +9,7 @@ const asyncHandler = require("express-async-handler");
 
 const validateImage = [
     body("name").notEmpty().withMessage("An error occured, name should not be empty!"),
-    body("description").notEmpty().withMessage("An error occured, description should not be empty!"),
+    body("description").notEmpty().withMessage("An error occured, description should not be empty!").isLength({min : 1, max : 3000}).withMessage("Description should be between 1 and 3000 characters"),
     body("file").custom((value, {req}) => {
         const file = req.files.picture;
         if (!file.mimetype.includes("image")){

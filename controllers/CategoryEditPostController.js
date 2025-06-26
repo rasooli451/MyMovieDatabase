@@ -31,7 +31,7 @@ const validateImage = [
 const CategoryEditPostController = [validateImage, async function(req, res){
     const errors = validationResult(req);
     if (!errors.isEmpty()){
-        res.render("Pages/index", {content : "../Partials/Errors", errors : errors.array()});
+        return res.render("Pages/index", {content : "../Partials/Errors", errors : errors.array()});
     }
     const {id} = req.params;
     const {name, description} = req.body;

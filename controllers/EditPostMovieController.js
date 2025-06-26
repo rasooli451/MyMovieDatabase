@@ -38,7 +38,7 @@ const EditPostMovieController = [
     validateMovie, async function(req, res){
         let errors = validationResult(req);
         if (!errors.isEmpty()){
-        res.status(400).render("Pages/index", {content : "../Partials/Errors", errors : errors.array()});
+        return res.status(400).render("Pages/index", {content : "../Partials/Errors", errors : errors.array()});
         }
         const {name, release, rating, director, category_id} = req.body;
         const {id} = req.params;
