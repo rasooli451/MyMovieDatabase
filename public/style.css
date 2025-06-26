@@ -27,13 +27,12 @@
 body{
     height: 100%;
     width: 100%;
+    font-family :'Courier New', Courier, monospace, sans-serif;
+    font-weight: 100;
 }
 
 
-.title{
-    font-family: "Shindler", Arial, Helvetica, sans-serif;
-    color: #fff;
-}
+
 
 
 .soulway{
@@ -45,7 +44,7 @@ body{
 
 
 .big{
-    font-size: 2.5em;
+    font-size: clamp(1.5em, 3vw, 2.5em)
 }
 
 main{
@@ -64,16 +63,29 @@ main{
 
 header{
     width: 100%;
-    padding: 1em;
+    padding: 0.5em;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #000;
     border-bottom: 2px solid #fff;
+}
+
+.title{
+    font-family: "Shindler", Arial, Helvetica, sans-serif;
+    color: #fff;
+    display: flex;
+    margin: 0;
+    font-size: clamp(0.7em, 3vw, 2.3em);
 }
 
 header ul{
     display: flex;
     list-style: none;
     align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: max(1000px, 20vw);
 }
 
 
@@ -88,11 +100,15 @@ header ul{
 
 
 .listItem {
-    margin: 0 4em;
     position: relative;
     z-index: 0; /* Keep base layer */
     color: #fff;
     overflow: hidden; /* Ensures ::before stays within */
+}
+
+.listItem a{
+    width: 100%;
+    height: 100%;
 }
 
 .listItem::before {
@@ -114,12 +130,12 @@ header ul{
     color: #000;
 }
 
-
-
-
-header .title{
-    margin-right: auto;
+video{
+    pointer-events: none;
 }
+
+
+
 
 
 
@@ -138,12 +154,14 @@ video{
 }
 
 footer{
-    min-height: 200px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     background-color: #000;
+    text-align: center;
     color: #fff;
     border-top: 2px solid #fff;
     gap: 15px;
@@ -152,40 +170,115 @@ footer{
 
 
 
-
-form{
-    border: 2px solid blue;
+.form{
     padding: 1em;
     outline: none;
     border-radius: 15px;
-    width: 500px;
+    width: min(500px, 95vw);
+    background:  linear-gradient(145deg, #0f0c29, #302b63, #24243e);
 }
 
-label{
-    vertical-align:bottom;
-}
+
+
 
 
 
 input{
     width: 80%;
-    border: 2px solid blue;
     float: right;
     height: 30px;
     padding: 8px;
-    vertical-align: bottom;
+    border: none;
+    outline: none;
 }
 
 textarea{
     width: 100%;
+    border: none;
+    outline: none;
 }
 
 .formPart{
     margin: 1.5em 0;
-    border: 2px solid red;
     padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
+
+textarea{
+    height: 100px;
+    padding: 10px;
+}
+
+
+input[type="file"]{
+    display: none;
+}
+
+input[type="date"]{
+    width: 100%;
+}
+
+.label{
+    margin-bottom: 6px;
+}
+
+.picture{
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #3a0ca3;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.picture:hover{
+    background-color: #560bad;
+}
+
+.fileName{
+    color: #ccc;
+    font-style: italic;
+}
+
+
+.buttonCont{
+    text-align: center;
+}
+
+.buttonCont button{
+    background-color: #3a0ca3;
+    padding: 10px 16px;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buttonCont button:hover{
+    background-color: #24243e;
+}
+
+
+#category{
+    border: none;
+    outline: none;
+    height: 20px;
+}
+
+.special{
+    justify-content: unset;
+}
+
+.special label{
+    margin-right: 10px;
+}
 
 .categoriesContainer{
     margin-bottom: 1.5em;
@@ -194,31 +287,44 @@ textarea{
 .filterSection{
     width: 100%;
     padding: 1em;
+    height: 70px;
+    margin-bottom: 2em;
 }
+
+
 .filter{
-    width: 250px;
-    margin-left: auto;
+    float: right;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+option{
+    text-align: center;
 }
 
 
 
-
+.movies{
+    height: 470px;
+}
 
 
 .categories, .movies{
     display: flex;
     gap: 1em;
-    padding: 1em;
     width: 100%;
     overflow-x: scroll;
     align-items: center;
-    height: 470px;
     scrollbar-color: #272424 #000;
 }
 
 
 .AllMovies{
     width: 100%;
+    
 }
 
 
@@ -226,7 +332,9 @@ textarea{
 .collection{
     display: flex;
     gap: 1em;
-    width: 80%;
+    width: 87%;
+    justify-content: center;
+    margin: 0 auto;
     flex-wrap: wrap;
 }
 
@@ -249,7 +357,11 @@ textarea{
 
 .movieDetails, .categoryDetails{
     padding: 15px;
+    width: 300px;
 }
+
+
+
 
 
 .link{
@@ -267,12 +379,28 @@ textarea{
 
 
 .buttons a{
+    width: 50%;
+    background-color: #000;
+}
+
+.options{
+    width: 250px;
+    margin-right: auto;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.options a{
+    background-color: #FF6F61;
+}
+
+.buttons a,.options a{
     text-decoration: none;
     color: #fff;
-    width: 50%;
     text-align: center;
     padding: 5px;
-    background-color: #000;
     border-radius: 5px;
 }
 
@@ -281,6 +409,16 @@ textarea{
     background-color: #FF6F61;
     transform: scale(1.2);
 }
+
+
+.options a:hover{
+    background-color: #000;
+    transform: scale(1.2);
+}
+
+
+
+
 
 
 
@@ -293,20 +431,164 @@ textarea{
 
 
 .body{
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.warning{
 
+
+
+.CurrentImg{
+    width: 100px;
+    height: 100px;
 }
 
 
-.formImage{
-    width: 70px;
-    height: 70px;
+
+
+
+
+
+
+
+
+
+
+
+.filterSection label {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
 }
 
 
+
+
+
+
+.filterSection select {
+  background-color: #111;         
+  color: #ccc;                    
+  border: 2px solid #444;         
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: border 0.2s ease, background-color 0.2s ease; 
+}
+
+
+
+.filterSection select:hover,
+.filterSection select:focus {
+  border-color: #00b3b3;
+  background-color: #1a1a1a;
+  outline: none;
+}
+
+.filterSection select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ccc' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+
+.Title{
+    margin-bottom: 20px;
+    margin-left: 15px;
+    font-size: 1.5em;
+}
+
+
+
+.CategoryPage, .CategoryContainer{
+    width: 100%;
+}
+
+
+
+
+.imageHolder{
+    width: 100%;
+    max-height: 900px;
+    overflow: hidden;
+}
+
+.imageHolder img{
+    width: 100%;
+}
+
+.categoryDetails{
+    width: 100%;
+}
+
+
+.categoryMovies{
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.count{
+    margin-top: 10px;
+    font-weight: 800;
+}
+
+
+
+.bigger{
+    font-size: 3em;
+}
+
+
+.errors{
+    width: 80%;
+    margin: 0 auto;
+    color: #Fff;
+}
+
+.error{
+    width: 100%;
+    font-size: 2em;
+    background-color: #302b63;
+}
+
+
+
+
+@media (max-width: 700px) {
+    header .title{
+        display: none;
+    }
+
+    header{
+        padding: 10px;
+        justify-content: space-evenly;
+    }
+
+    header ul{
+        width: 100%;
+    }
+}
+
+
+@media (max-width : 550px) {
+    main{
+        padding: 10px;
+    }
+}
+
+
+@media (max-width : 318px) {
+    input{
+        width: 100%;
+    }
+}
