@@ -3,7 +3,7 @@
 
 
 const {body, validationResult} = require("express-validator");
-const { editMovie } = require("../database/queries");
+const { editMovie } = require("../../database/queries");
 
 
 

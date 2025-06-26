@@ -1,5 +1,5 @@
 
-const {RemoveMovie} = require("../database/queries");
+const {RemoveMovie} = require("../../database/queries");
 
 
 

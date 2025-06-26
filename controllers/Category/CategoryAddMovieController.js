@@ -1,5 +1,5 @@
 
-const {getAllCategories} = require("../database/queries");
+const {getAllCategories} = require("../../database/queries");
 
 
 const CategoryAddMovieController = async function(req, res){

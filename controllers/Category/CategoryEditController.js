@@ -2,7 +2,7 @@
 
 
 
-const {getCategory} = require("../database/queries");
+const {getCategory} = require("../../database/queries");
 
 
 

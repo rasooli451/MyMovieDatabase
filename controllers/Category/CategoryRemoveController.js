@@ -1,6 +1,6 @@
 
 
-const {RemoveCategory} = require("../database/queries");
+const {RemoveCategory} = require("../../database/queries");
 
 
 

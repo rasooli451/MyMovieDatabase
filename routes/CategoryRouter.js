@@ -7,17 +7,17 @@ const {Router} = require('express');
 const CategoryRouter = Router();
 
 
-const CategoryController = require("../controllers/CategoryController");
-const CategoryIndexController = require("../controllers/CategoryIndexController");
-const CategoryDetailsController = require("../controllers/CategoryDetailsController");
-const EditMovieController = require("../controllers/EditMovieController");
-const EditPostMovieController = require("../controllers/EditPostMovieController");
-const CategoryEditController = require("../controllers/CategoryEditController");
-const CategoryEditPostController = require("../controllers/CategoryEditPostController");
-const CategoryAddMovieController = require("../controllers/CategoryAddMovieController");
-const CategoryAddMoviePostController = require("../controllers/CategoryAddMoviePostController");
-const CategoryRemoveController = require("../controllers/CategoryRemoveController");
-const WarningController = require("../controllers/WarningController");
+const CategoryController = require("../controllers/Category/CategoryController");
+const CategoryIndexController = require("../controllers/Category/CategoryIndexController");
+const CategoryDetailsController = require("../controllers/Category/CategoryDetailsController");
+const EditMovieController = require("../controllers/Movie/EditMovieController");
+const EditPostMovieController = require("../controllers/Movie/EditPostMovieController");
+const CategoryEditController = require("../controllers/Category/CategoryEditController");
+const CategoryEditPostController = require("../controllers/Category/CategoryEditPostController");
+const CategoryAddMovieController = require("../controllers/Category/CategoryAddMovieController");
+const CategoryAddMoviePostController = require("../controllers/Category/CategoryAddMoviePostController");
+const CategoryRemoveController = require("../controllers/Category/CategoryRemoveController");
+const WarningController = require("../controllers/Category/WarningController");
 
 CategoryRouter.get("/", CategoryIndexController);
 
@@ -55,7 +55,7 @@ CategoryRouter.get("/removec/:id", CategoryRemoveController);
 CategoryRouter.get("/warning/:id", WarningController);
 
 
-/*CategoryRouter.get("/remove/:id", CategoryRemoveController);*/
+
 
 
 

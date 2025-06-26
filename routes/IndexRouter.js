@@ -3,17 +3,18 @@
 
 const asyncHandler = require('express-async-handler');
 const {Router} = require('express');
-const IndexController = require("../controllers/IndexController");
+
 
 const indexRouter = Router();
-const CreateCategoryController = require("../controllers/CreateCategoryController");
-const RemoveMovieController = require("../controllers/RemoveMovieController");
-const EditMovieController = require("../controllers/EditMovieController");
-const EditPostMovieController = require("../controllers/EditPostMovieController");
-const CategoryEditController = require("../controllers/CategoryEditController");
-const CategoryEditPostController = require("../controllers/CategoryEditPostController");
-const CategoryRemoveController = require("../controllers/CategoryRemoveController");
-const WarningController = require("../controllers/WarningController");
+const IndexController = require("../controllers/Index/IndexController");
+const CreateCategoryController = require("../controllers/Category/CreateCategoryController");
+const RemoveMovieController = require("../controllers/Movie/RemoveMovieController");
+const EditMovieController = require("../controllers/Movie/EditMovieController");
+const EditPostMovieController = require("../controllers/Movie/EditPostMovieController");
+const CategoryEditController = require("../controllers/Category/CategoryEditController");
+const CategoryEditPostController = require("../controllers/Category/CategoryEditPostController");
+const CategoryRemoveController = require("../controllers/Category/CategoryRemoveController");
+const WarningController = require("../controllers/Category/WarningController");
 
 
 

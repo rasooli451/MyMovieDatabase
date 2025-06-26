@@ -1,7 +1,7 @@
 
 
 
-const {AddMovieToCategory} = require("../database/queries");
+const {AddMovieToCategory} = require("../../database/queries");
 const asyncHandler = require("express-async-handler");
 const {body, validationResult} = require("express-validator");
 

@@ -3,13 +3,13 @@
 const {Router} = require("express");
 
 const MovieRouter = Router();
-const MovieFormController = require("../controllers/MovieFormController");
-const AddMovieController = require("../controllers/AddMovieController");
+const MovieFormController = require("../controllers/Index/MovieFormController");
+const AddMovieController = require("../controllers/Movie/AddMovieController");
 
-const MovieIndexController = require("../controllers/MovieIndexController");
-const EditMovieController = require("../controllers/EditMovieController");
-const EditPostMovieController = require("../controllers/EditPostMovieController");
-const RemoveMovieController = require("../controllers/RemoveMovieController");
+const MovieIndexController = require("../controllers/Movie/MovieIndexController");
+const EditMovieController = require("../controllers/Movie/EditMovieController");
+const EditPostMovieController = require("../controllers/Movie/EditPostMovieController");
+const RemoveMovieController = require("../controllers/Movie/RemoveMovieController");
 
 
 MovieRouter.get("/", MovieIndexController);

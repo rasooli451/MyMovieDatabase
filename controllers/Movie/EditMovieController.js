@@ -1,7 +1,7 @@
 
 
 
-const {getMovie, getAllCategories} = require("../database/queries");
+const {getMovie, getAllCategories} = require("../../database/queries");
 
 
 

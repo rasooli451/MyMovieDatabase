@@ -1,7 +1,7 @@
 
 
 const {body, validationResult} = require("express-validator");
-const { editCategory } = require("../database/queries");
+const { editCategory } = require("../../database/queries");
 
 
 

@@ -1,6 +1,6 @@
 
 
-const {getMoviesByCategory,getCategory, filterMovies} = require("../database/queries");
+const {getMoviesByCategory,getCategory, filterMovies} = require("../../database/queries");
 
 
 

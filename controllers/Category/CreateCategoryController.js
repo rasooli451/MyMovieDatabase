@@ -1,6 +1,6 @@
 
 
-const {CreateCategory} = require("../database/queries");
+const {CreateCategory} = require("../../database/queries");
 
 
 const {body, validationResult} = require("express-validator");
