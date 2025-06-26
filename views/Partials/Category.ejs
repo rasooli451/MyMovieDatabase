@@ -15,21 +15,22 @@
             <% } %>
         </div>
         <div class="categoryDetails">
-            <p class="soulway"><%= category.name %></p>
+            <p class="soulway" style="font-size: 2em;"><%= category.name %></p>
             <p><%= category.description %></p>
-            <div class="buttons">
+            <% if (category.count > 0) {%>
+                    <p class="count">Number Of Movies: <%= category.count %> Movies</p>
+                <% } else { %>
+                    <p class="count">No Movies Exist in this category.</p>
+                <% } %>
+            <div class="options">
                 <a href="/category/editCat/<%= category.category_id %>">Edit</a>
                 <a href="/category/warning/<%= category.category_id %>">Remove</a>
                 <a href="/category/<%= category.category_id %>/Add">Add Movie</a>
             </div>
         </div>
         <div class="categoryMovies">
-            <% if (category.count > 0) {%>
-                    <p class="soulway"><%= category.count %> Movies</p>
-                <% } else { %>
-                    <p class="soulway">No Movies</p>
-                <% } %>
             <%- include("Filter") %>
+            <h1 class="soulway Title"><%= locals.title %></h1>
             <div class="collection">
                 <%- include("Movies") %>
             </div>

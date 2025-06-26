@@ -8,25 +8,25 @@
 
 
 <% if (!locals.fromCategory) { %>
-     <form action="/movies/Add" method="post" encType="multipart/form-data">
-        <h1 class="soulway">Add a new Movie</h1>
+     <form action="/movies/Add" method="post" encType="multipart/form-data" class="form">
+        <h2>Add a new Movie</h2>
         <div class="formPart">
             <label for="name">Name:</label>
-            <input type="text" required name="name" id="name">
-        </div>
-        <div class="formPart">
-            <label for="release">Release Date:</label>
-            <input type="date" required name="release" id="release">
+            <input type="text" required name="name" id="name" placeholder="name of the movie...">
         </div>
         <div class="formPart">
             <label for="rating">Rating:</label>
-            <input type="text" required name="rating" id="rating">
+            <input type="text" required name="rating" id="rating" placeholder="rating between 0 and 100...">
         </div>
         <div class="formPart">
             <label for="director">Director:</label>
-            <input type="text" required name="director" id="director">
+            <input type="text" required name="director" id="director" placeholder="director of the movie...">
         </div>
         <div class="formPart">
+            <label for="release" class="label">Release Date:</label>
+            <input type="date" required name="release" id="release">
+        </div>
+        <div class="formPart special">
             <label for="category">Category:</label>
             <select name="category_id" id="category">
                     <% locals.categories.forEach(function(category){ %>
@@ -35,8 +35,9 @@
             </select>
         </div>
         <div class="formPart">
-            <label for="Picture">Picture:</label>
-            <input type="file" name="picture" id="Picture" required accept="image/*">
+            <label for="PictureInput" class="picture">Choose Picture</label>
+            <span class="fileName">No file chosen</span>
+            <input type="file" name="picture" id="PictureInput" required accept="image/*">
         </div>
         <div class="buttonCont">
             <button type="submit">Add</button>
@@ -44,15 +45,11 @@
         </div>
      </form>
      <% } else { %>
-        <form action="/category/<%= locals.id %>/Add" method="post" encType="multipart/form-data">
-            <h1 class="soulway">Add a new Movie</h1>
+        <form action="/category/<%= locals.id %>/Add" method="post" encType="multipart/form-data" class="form">
+            <h2>Add a new Movie</h2>
         <div class="formPart">
             <label for="name">Name:</label>
             <input type="text" required name="name" id="name">
-        </div>
-        <div class="formPart">
-            <label for="release">Release Date:</label>
-            <input type="date" required name="release" id="release">
         </div>
         <div class="formPart">
             <label for="rating">Rating:</label>
@@ -63,6 +60,10 @@
             <input type="text" required name="director" id="director">
         </div>
         <div class="formPart">
+            <label for="release">Release Date:</label>
+            <input type="date" required name="release" id="release">
+        </div>
+        <div class="formPart special">
             <label for="category">Category:</label>
             <select name="category_id" id="category">
                     <% locals.categories.forEach(function(category){ %>
@@ -76,8 +77,9 @@
         </div>
         <input type="text" value="<%= locals.id %>" class="hidden" name="previous">
         <div class="formPart">
-            <label for="Picture">Picture:</label>
-            <input type="file" name="picture" id="Picture">
+            <label for="PictureInput" class="picture">Choose Picture</label>
+            <span class="fileName">No file chosen</span>
+            <input type="file" name="picture" id="PictureInput" required accept="image/*">
         </div>
         <div class="buttonCont">
             <button type="submit">Add</button>

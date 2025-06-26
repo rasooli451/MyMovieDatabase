@@ -8,20 +8,21 @@
 
 
 
-<form action="/newCategory" method="post" encType="multipart/form-data">
-    <h1>Add a new Category</h1>
+<form action="/newCategory" method="post" encType="multipart/form-data" class="form">
+    <h2>Add a new Category</h2>
     <div class="formPart">
             <label for="name">Name: </label>
-            <input type="text" required name="name" id="name">
+            <input type="text" required name="name" id="name" placeholder="name of the category...">
     </div>
     <div class="formPart">
-            <label for="description">Description: </label>
-            <textarea name="description" id="description" required></textarea>
+            <label for="description" class="label">Description: </label>
+            <textarea name="description" id="description" required placeholder="write a short description for the category..."></textarea>
 
     </div>
     <div class="formPart">
-            <label for="Picture">Picture: </label>
-            <input type="file" name="picture" id="Picture" accept="image/*" required>
+            <label for="PictureInput" class="picture">Choose Picture</label>
+            <span class="fileName">No file chosen</span>
+            <input type="file" name="picture" id="PictureInput" accept="image/*" required>
     </div>
     <div class="buttonCont">
             <button type="submit">Add</button>

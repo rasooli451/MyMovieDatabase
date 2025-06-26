@@ -3,14 +3,10 @@
 
 
 
-<form action="<%= locals.path %>/edit/<%= movie.movie_id %>" method="post" encType="multipart/form-data">
+<form action="<%= locals.path %>/edit/<%= movie.movie_id %>" method="post" encType="multipart/form-data" class="form">
         <div class="formPart">
             <label for="name">Name:</label>
             <input type="text" required name="name" id="name" value="<%= movie.name %>">
-        </div>
-        <div class="formPart">
-            <label for="release">Release Date:</label>
-            <input type="date" required name="release" id="release" value="<%= movie.releasedate.toLocaleString().split(",")[0] %>">
         </div>
         <div class="formPart">
             <label for="rating">Rating:</label>
@@ -21,6 +17,10 @@
             <input type="text" required name="director" id="director" value="<%= movie.director %>">
         </div>
         <div class="formPart">
+            <label for="release">Release Date:</label>
+            <input type="date" required name="release" id="release" value="<%= movie.releasedate.toLocaleString().split(",")[0] %>">
+        </div>
+        <div class="formPart special">
             <label for="category">Category:</label>
             <select name="category_id" id="category">
                     <% locals.categories.forEach(function(category){ %>
@@ -37,12 +37,14 @@
         <% } %>  
         <div class="formPart">
             <p>Current image:</p>
-            <img src="data:<%= movie.datatype %>;base64,<%= movie.picture.toString('base64') %> " alt="movie image" class="formImage">
+            <img src="data:<%= movie.datatype %>;base64,<%= movie.picture.toString('base64') %> " alt="movie image" class="CurrentImg" style="margin-bottom: 0.5em;">
             <p>You can upload a new image to replace this one (optional).</p>
-            <label for="Picture">Picture:</label>
-            <input type="file" name="picture" id="Picture" accept="image/*">
         </div>
-        
+        <div class="formPart">
+            <label for="PictureInput" class="picture">Choose Picture</label>
+            <span class="fileName">No file chosen</span>
+            <input type="file" name="picture" id="PictureInput" accept="image/*">
+        </div>
         <div class="buttonCont">
             <button type="submit">Add</button>
             <button type="reset">Reset</button>
