@@ -131,7 +131,7 @@ const getAllCategories = asyncHandler(async function(){
 
 
 const getAllMovies = asyncHandler(async function(){
-    const {rows} = await Pool.query("SELECT movies.*, categories.name AS category, directors.name AS director FROM movies INNER JOIN categories ON movies.category_id=categories.category_id INNER JOIN directors ON movies.director_id=directors.director_id");
+    const {rows} = await Pool.query("SELECT DISTINCT ON (movies.Name) movies.*, categories.name AS category, directors.name AS director FROM movies INNER JOIN categories ON movies.category_id=categories.category_id INNER JOIN directors ON movies.director_id=directors.director_id");
     return rows;
 })
 
