@@ -6,7 +6,7 @@ const PORT = 5000;
 const path = require("node:path");
 const assetSource = path.join(__dirname, "public");
 const fileUploader = require("express-fileupload");
-const Pool = require("./pool");
+const Pool = require("./database/pool");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
