@@ -4,14 +4,42 @@ require("dotenv").config();
 
 
 const SQL = `
-INSERT INTO Movies (Name,releaseDate,rating,category_id,director_id) VALUES('The Dark Knight', '2008-07-18',90,NULL,NULL);
 
-INSERT INTO categories (name, description) VALUES('Action', 'The Action genre is known for its fast-paced sequences, physical stunts, chases, fights, explosions, and intense conflict. It often focuses on heroes overcoming obstacles through strength, skill, or bravery, and emphasizes excitement, danger, and high stakes. Common themes include justice, revenge, and survival, with narratives that keep audiences on the edge of their seats.');
+CREATE TABLE IF NOT EXISTS movies (
+   movie_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+   Name VARCHAR (200),
+   releasedate DATE,
+   rating INTEGER,
+   category_id INTEGER,
+   director_id INTEGER,
+   picture BYTEA,
+   datatype VARCHAR (64)
+);
 
-INSERT INTO directors (name) VALUES('Christopher Nolan');
 
-UPDATE Movies SET director_id=1 WHERE Movie_id=1;
-UPDATE Movies SET category_id=1 WHERE Movie_id=1;
+CREATE TABLE IF NOT EXISTS categories(
+    category_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR (40),
+    description VARCHAR (3000),
+    picture BYTEA,
+    datatype VARCHAR (64),
+    count INTEGER
+);
+
+
+CREATE TABLE IF NOT EXISTS directors(
+    director_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(80)
+);
+
+ALTER TABLE movies
+ADD FOREIGN KEY(category_id)
+REFERENCES categories(category_id) ON DELETE CASCADE;
+
+
+ALTER TABLE movies
+ADD FOREIGN KEY(director_id)
+REFERENCES directors(director_id) ON DELETE SET NULL;
 `;
 
 
