@@ -6,6 +6,7 @@ const PORT = 5000;
 const path = require("node:path");
 const assetSource = path.join(__dirname, "public");
 const fileUploader = require("express-fileupload");
+const Pool = require("./pool");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -40,6 +41,15 @@ app.use("/category", CategoryRouter);
 app.use("/movies", MovieRouter)
 
 
+app.get('/ping-db', async (req, res) => {
+  try {
+    const result = await Pool.query('SELECT NOW()');
+    res.send(`OK — DB connected, time: ${result.rows[0].now}`);
+  } catch (err) {
+    console.error('DB error:', err);
+    res.status(500).send(`DB ERROR: ${err.message}`);
+  }
+});
 
 
 app.use((req, res, next)=>{
