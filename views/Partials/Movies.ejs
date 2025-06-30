@@ -18,7 +18,7 @@
                 </div>
                 <div class="movieDetails">
                     <p class="soulway"><%= movie.name %></p>
-                    <p>Release date:<%= movie.releasedate.toLocaleString().split(",")[0] %></p>
+                    <p>Release date:<%= movie.releasedate.toISOString().split('T')[0] %></p>
                     <p>Rating:<%= movie.rating %></p>
                     <p>Category:<%= movie.category %></p>
                     <p>Director:<%= movie.director %></p>
