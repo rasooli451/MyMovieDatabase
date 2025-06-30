@@ -18,7 +18,7 @@
         </div>
         <div class="formPart">
             <label for="release">Release Date:</label>
-            <input type="date" required name="release" id="release" value="<%= movie.releasedate.toLocaleString().split(",")[0] %>">
+            <input type="date" required name="release" id="release" value="<%= movie.releasedate.toISOString().split('T')[0] %>">
         </div>
         <div class="formPart special">
             <label for="category">Category:</label>
@@ -46,7 +46,7 @@
             <input type="file" name="picture" id="PictureInput" accept="image/*">
         </div>
         <div class="buttonCont">
-            <button type="submit">Add</button>
+            <button type="submit">Edit</button>
             <button type="reset">Reset</button>
         </div>
      </form>
